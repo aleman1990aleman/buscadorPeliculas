@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h4>Resultados para: "{{ query }}"</h4>
+
+{% if resultados %}
+  <div class="col-12 col-md-6 col-lg-3">
+{% for item in resultados %}
+  {% if item.poster_path %}
+  <div class="col">
+    <div class="card h-100">
+      <img src="{{ img_url }}{{ item.poster_path }}" class="card-img-top">
+      <div class="card-body">
+        <h6>{{ item.title or item.name }}</h6>
+        <a href="/detail/{{ item.media_type }}/{{ item.id }}" class="btn btn-sm btn-outline-primary">Detalle</a>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+{% endfor %}
+</div>
+{% else %}
+<p>No hay resultados.</p>
+{% endif %}
+
+{% endblock %}

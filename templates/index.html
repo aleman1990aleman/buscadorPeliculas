@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2 class="mb-4">Populares</h2>
+
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+{% for item in items %}
+  <div class="col">
+    <div class="card h-100">
+      <img src="{{ img_url }}{{ item.poster_path }}" class="card-img-top">
+      <div class="card-body">
+        <h6 class="card-title">{{ item.title or item.name }}</h6>
+        <p>⭐ {{ item.vote_average }}</p>
+        <span class="badge bg-info">{{ item.media_type }}</span>
+        <a href="/detail/{{ item.media_type }}/{{ item.id }}" class="btn btn-sm btn-primary mt-2">Ver más</a>
+      </div>
+    </div>
+  </div>
+{% endfor %}
+</div>
+
+{% endblock %}
